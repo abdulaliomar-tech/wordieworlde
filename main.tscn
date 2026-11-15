@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cj8dgeatjyqbv"]
+
+[ext_resource type="Script" uid="uid://7od6dkippy8d" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="Animation" id="Animation_ig7tw"]
+resource_name = "shake"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0xm2m"]
+_data = {
+&"shake": SubResource("Animation_ig7tw")
+}
+
+[node name="main" type="Control" unique_id=743591915]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1957992165]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 74.0
+offset_right = 411.0
+offset_bottom = 574.0
+
+[node name="WORDLE" type="Label" parent="VBoxContainer" unique_id=79682015]
+layout_mode = 2
+
+[node name="Board" type="GridContainer" parent="VBoxContainer" unique_id=1710469735]
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Board" unique_id=1610062608]
+libraries/ = SubResource("AnimationLibrary_0xm2m")
+
+[node name="restartbutton" type="Button" parent="VBoxContainer" unique_id=841722321]
+layout_mode = 2
+text = "PLAY AGAIN
+"
+
+[connection signal="pressed" from="VBoxContainer/restartbutton" to="." method="_on_restart_button_pressed"]
